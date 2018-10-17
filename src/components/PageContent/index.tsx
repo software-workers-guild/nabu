@@ -1,9 +1,5 @@
 import * as React from "react";
-import styled from "styled-components";
-
-const Wrapper = styled.div`
-  border: none;
-`;
+import { Content, Wrapper } from "./styles";
 
 interface IPageContent {
   title: string;
@@ -28,7 +24,7 @@ const PageContent = ({
     <h3>{datePublished}</h3>
     <h3>{url}</h3>
     <h3>{wordCount}</h3>
-    {content && <div dangerouslySetInnerHTML={{ __html: content }} />}
+    {content && <Content dangerouslySetInnerHTML={{ __html: content }} />}
   </Wrapper>
 );
 

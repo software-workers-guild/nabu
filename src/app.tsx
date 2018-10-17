@@ -29,12 +29,13 @@ interface IMercuryResponse {
 }
 
 interface AppState {
-  title: string;
-  author: string;
-  content: string;
-  datePublished: string;
-  url: string;
-  wordCount: number | null | undefined;
+  title?: string;
+  author?: string;
+  content?: string;
+  datePublished?: string;
+  url?: string;
+  wordCount?: number | null | undefined;
+  inputValue?: string;
 }
 
 export class App extends React.Component<{}, AppState> {
@@ -44,15 +45,14 @@ export class App extends React.Component<{}, AppState> {
     content: "",
     datePublished: "",
     url: "",
-    wordCount: null
+    wordCount: null,
+    inputValue: ""
   };
   private fetchUrl = () => {
     console.log("fetching url");
 
     mercury
-      .parse(
-        "https://foreignpolicy.com/2016/07/29/the-end-of-days-is-coming-just-not-to-china-apocalyptic-fiction-movies/"
-      )
+      .parse(this.state.inputValue)
       .then((response: IMercuryResponse) => {
         console.log(response);
         this.setState({
@@ -69,6 +69,12 @@ export class App extends React.Component<{}, AppState> {
       });
   };
 
+  private onInputChange = (e: any) => {
+    this.setState({
+      inputValue: e.target.value
+    });
+  };
+
   render() {
     const {
       title,
@@ -80,7 +86,11 @@ export class App extends React.Component<{}, AppState> {
     } = this.state;
     return (
       <Container>
-        <UrlBarInput onVisit={this.fetchUrl} />
+        <UrlBarInput
+          onInputChange={this.onInputChange}
+          onVisit={this.fetchUrl}
+          inputValue={this.state.inputValue}
+        />
         <ActiveUrlBar successfulFetch={true} url={url} />
         <PageContent
           title={title}

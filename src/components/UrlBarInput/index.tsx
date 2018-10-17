@@ -19,11 +19,17 @@ const Button = styled.button`
 
 interface IUrlBarInput {
   onVisit: () => void;
+  onInputChange: any;
+  inputValue: string;
 }
 
-const UrlBarInput = ({ onVisit }: IUrlBarInput) => (
+const UrlBarInput = ({ onVisit, inputValue, onInputChange }: IUrlBarInput) => (
   <Wrapper>
-    <Input placeholder="where to?" />
+    <Input
+      onChange={e => onInputChange(e)}
+      placeholder="where to?"
+      value={inputValue}
+    />
     <Button onClick={onVisit}>☞</Button>
   </Wrapper>
 );
