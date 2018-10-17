@@ -1,6 +1,6 @@
 {
-  "name": "electron-command-center",
-  "productName": "electron-command-center",
+  "name": "nabu",
+  "productName": "nabu",
   "version": "1.0.0",
   "description": "My Electron application description",
   "main": "src/index.ts",
@@ -51,6 +51,7 @@
     "@types/react-dom": "^0.14.20",
     "electron-compile": "^6.4.3",
     "electron-devtools-installer": "^2.1.0",
+    "mercury-parser": "^1.0.0",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
     "react-helmet": "^5.2.0",
