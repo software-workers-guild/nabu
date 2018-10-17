@@ -10,6 +10,10 @@ const Wrapper = styled.div`
     props.successColor ? "#74cc6b" : "#ff496c"};
 `;
 
+const Text = styled.p`
+  color: #fff;
+`;
+
 interface ActiveUrlBarProps {
   successfulFetch: boolean;
   url: string;
@@ -17,7 +21,7 @@ interface ActiveUrlBarProps {
 
 const ActiveUrlBar = ({ successfulFetch, url }: ActiveUrlBarProps) => (
   <Wrapper successColor={successfulFetch}>
-    <p>{successfulFetch ? `Viewing ${url}` : `Error accessing ${url}`}</p>
+    <Text>{successfulFetch ? `Viewing ${url}` : `Error accessing ${url}`}</Text>
   </Wrapper>
 );
 

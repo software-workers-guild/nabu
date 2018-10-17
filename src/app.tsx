@@ -80,9 +80,8 @@ export class App extends React.Component<{}, AppState> {
     } = this.state;
     return (
       <Container>
-        <UrlBarInput />
-        <button onClick={this.fetchUrl}>search</button>
-        <ActiveUrlBar successfulFetch={true} url="example.com" />
+        <UrlBarInput onVisit={this.fetchUrl} />
+        <ActiveUrlBar successfulFetch={true} url={url} />
         <PageContent
           title={title}
           author={author}

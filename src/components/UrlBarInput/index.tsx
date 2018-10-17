@@ -8,10 +8,24 @@ const Input = styled.input`
   display: block;
 `;
 
-const UrlBarInput = () => (
-  <div>
+const Wrapper = styled.div`
+  display: flex;
+`;
+
+const Button = styled.button`
+  flex-basis: 40px;
+  font-size: 20px;
+`;
+
+interface IUrlBarInput {
+  onVisit: () => void;
+}
+
+const UrlBarInput = ({ onVisit }: IUrlBarInput) => (
+  <Wrapper>
     <Input placeholder="where to?" />
-  </div>
+    <Button onClick={onVisit}>☞</Button>
+  </Wrapper>
 );
 
 export default UrlBarInput;
