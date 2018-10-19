@@ -52,6 +52,7 @@
     "electron-compile": "^6.4.3",
     "electron-devtools-installer": "^2.1.0",
     "mercury-parser": "^1.0.0",
+    "node-readability": "^3.0.0",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
     "react-helmet": "^5.2.0",

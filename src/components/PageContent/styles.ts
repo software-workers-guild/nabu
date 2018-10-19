@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   border: none;
+  background-color: #fff;
 `;
 
 // lazy
@@ -398,6 +399,10 @@ export const Content = styled.div`
     th::selection,
     caption::selection {
       background-color: rgba(180, 237, 95, 0.5);
+    }
+
+    img {
+      display: none;
     }
   }
 `;

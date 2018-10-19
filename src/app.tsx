@@ -1,14 +1,17 @@
 import * as React from "react";
 import UrlBarInput from "./components/UrlBarInput";
-import ActiveUrlBar from "./components/ActiveUrlBar";
 import PageContent from "./components/PageContent";
 import styled from "styled-components";
+// its okay
+// we are going to swap this
+// for node-readability,
+// just chill
 const mercury = require("mercury-parser")(
   "PB12LDArVRzLeMogouAolKnimhRDgQcCG1kHCPUy"
 );
 
 const Container = styled.div`
-  padding: 10px;
+  padding: 68px 10px 0;
 `;
 
 interface IMercuryResponse {
@@ -48,7 +51,8 @@ export class App extends React.Component<{}, AppState> {
     wordCount: null,
     inputValue: ""
   };
-  private fetchUrl = () => {
+  private fetchUrl = (e: any) => {
+    e.preventDefault();
     console.log("fetching url");
 
     mercury
@@ -84,6 +88,7 @@ export class App extends React.Component<{}, AppState> {
       url,
       wordCount
     } = this.state;
+
     return (
       <Container>
         <UrlBarInput
@@ -91,7 +96,6 @@ export class App extends React.Component<{}, AppState> {
           onVisit={this.fetchUrl}
           inputValue={this.state.inputValue}
         />
-        <ActiveUrlBar successfulFetch={true} url={url} />
         <PageContent
           title={title}
           author={author}

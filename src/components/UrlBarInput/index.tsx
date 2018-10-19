@@ -3,34 +3,42 @@ import styled from "styled-components";
 
 const Input = styled.input`
   width: 100%;
-  padding: 10px;
+  padding: 6px 10px;
   margin: 0;
   display: block;
+  border: 1px solid #000;
 `;
 
 const Wrapper = styled.div`
+  position: fixed;
+  padding: 15px 10px;
+  border-bottom: 1px solid #000;
+  background-color: #fff;
+  top: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 0px 0px 10px #000;
+`;
+
+const Form = styled.form`
   display: flex;
 `;
 
-const Button = styled.button`
-  flex-basis: 40px;
-  font-size: 20px;
-`;
-
 interface IUrlBarInput {
-  onVisit: () => void;
+  onVisit: any;
   onInputChange: any;
   inputValue: string;
 }
 
 const UrlBarInput = ({ onVisit, inputValue, onInputChange }: IUrlBarInput) => (
   <Wrapper>
-    <Input
-      onChange={e => onInputChange(e)}
-      placeholder="where to?"
-      value={inputValue}
-    />
-    <Button onClick={onVisit}>☞</Button>
+    <Form onSubmit={e => onVisit(e)}>
+      <Input
+        onChange={e => onInputChange(e)}
+        placeholder="where to?"
+        value={inputValue}
+      />
+    </Form>
   </Wrapper>
 );
 

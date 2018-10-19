@@ -10,22 +10,27 @@ interface IPageContent {
   wordCount?: number | null | undefined;
 }
 
-const PageContent = ({
-  title,
-  author,
-  content,
-  datePublished,
-  url,
-  wordCount
-}: IPageContent) => (
-  <Wrapper>
-    <h1>{title}</h1>
-    <h2>{author}</h2>
-    <h3>{datePublished}</h3>
-    <h3>{url}</h3>
-    <h3>{wordCount}</h3>
-    {content && <Content dangerouslySetInnerHTML={{ __html: content }} />}
-  </Wrapper>
-);
+class PageContent extends React.Component<IPageContent, {}> {
+  render() {
+    const {
+      title,
+      author,
+      datePublished,
+      url,
+      wordCount,
+      content
+    } = this.props;
+    return (
+      <Wrapper>
+        <h1>{title}</h1>
+        <h2>{author}</h2>
+        <h3>{datePublished}</h3>
+        <h3>{url}</h3>
+        <h3>{wordCount}</h3>
+        {content && <Content dangerouslySetInnerHTML={{ __html: content }} />}
+      </Wrapper>
+    );
+  }
+}
 
 export default PageContent;
