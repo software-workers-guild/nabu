@@ -26,7 +26,7 @@ class PageContent extends React.Component<IPageContent, {}> {
         <h2>{author}</h2>
         <h3>{datePublished}</h3>
         <h3>{url}</h3>
-        <h3>{wordCount}</h3>
+        <h3>{wordCount} {wordCount == 1 ? "word" : "words"}</h3>
         {content && <Content dangerouslySetInnerHTML={{ __html: content }} />}
       </Wrapper>
     );
