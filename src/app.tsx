@@ -1,7 +1,9 @@
 import * as React from "react";
 import UrlBarInput from "./components/UrlBarInput";
 import PageContent from "./components/PageContent";
-import styled from "styled-components";
+import { IReadabilityProps } from "./types/IReadabilityProps";
+import { IAppState } from "./types/IAppState";
+import { AppContainer } from "./components/AppContainer";
 // its okay
 // we are going to swap this
 // for node-readability,
@@ -10,38 +12,7 @@ const mercury = require("mercury-parser")(
   "PB12LDArVRzLeMogouAolKnimhRDgQcCG1kHCPUy"
 );
 
-const Container = styled.div`
-  padding: 68px 10px 0;
-`;
-
-interface IMercuryResponse {
-  title: string;
-  author: string;
-  date_published: string;
-  dek: string;
-  lead_image_url: string;
-  content: string;
-  next_page_url: string;
-  url: string;
-  domain: string;
-  excerpt: string;
-  word_count: number | null | undefined;
-  direction: string;
-  total_pages: number;
-  rendered_pages: number;
-}
-
-interface AppState {
-  title?: string;
-  author?: string;
-  content?: string;
-  datePublished?: string;
-  url?: string;
-  wordCount?: number | null | undefined;
-  inputValue?: string;
-}
-
-export class App extends React.Component<{}, AppState> {
+export class App extends React.Component<{}, IAppState> {
   state = {
     title: "",
     author: "",
@@ -51,13 +22,12 @@ export class App extends React.Component<{}, AppState> {
     wordCount: null,
     inputValue: ""
   };
-  private fetchUrl = (e: any) => {
+  private fetchUrl = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("fetching url");
 
     mercury
       .parse(this.state.inputValue)
-      .then((response: IMercuryResponse) => {
+      .then((response: IReadabilityProps) => {
         console.log(response);
         this.setState({
           title: response.title,
@@ -73,9 +43,9 @@ export class App extends React.Component<{}, AppState> {
       });
   };
 
-  private onInputChange = (e: any) => {
+  private onInputChange = (e: React.FormEvent<HTMLInputElement>): void => {
     this.setState({
-      inputValue: e.target.value
+      inputValue: e.currentTarget.value
     });
   };
 
@@ -90,7 +60,7 @@ export class App extends React.Component<{}, AppState> {
     } = this.state;
 
     return (
-      <Container>
+      <AppContainer>
         <UrlBarInput
           onInputChange={this.onInputChange}
           onVisit={this.fetchUrl}
@@ -104,7 +74,7 @@ export class App extends React.Component<{}, AppState> {
           url={url}
           wordCount={wordCount}
         />
-      </Container>
+      </AppContainer>
     );
   }
 }
