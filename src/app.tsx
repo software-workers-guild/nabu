@@ -11,7 +11,7 @@ const mercury = require("mercury-parser")(
 );
 
 const Container = styled.div`
-  padding: 68px 10px 0;
+  padding: 98px 40px 0;
 `;
 
 interface IMercuryResponse {

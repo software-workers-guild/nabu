@@ -1,31 +1,27 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  border: none;
-  background-color: #fff;
 `;
 
 // lazy
 export const Content = styled.div`
   body {
     -webkit-font-smoothing: antialiased;
-    font-family: "Helvetica Neue", Helvetica, Arial, Verdana, sans-serif;
+    font-family: sans-serif;
     font-size: 16px;
     line-height: 1.3125em;
     margin: 30px 0 0;
     padding: 0;
   }
 
-  #wrapper {
-    padding: 20px;
+  li {
+    font-size: 100%;
   }
 
-  li {
-    font-size: 110%;
-  }
   li li {
     font-size: 100%;
   }
+
   li p {
     font-size: 100%;
     margin: 0.5em 0;
@@ -81,12 +77,13 @@ export const Content = styled.div`
   td,
   div {
     color: #111111;
-    font-family: "Helvetica Neue", Helvetica, Arial, Verdana, sans-serif;
+    font-family: sans-serif;
+    max-width: 700px;
     word-wrap: break-word;
   }
 
   a {
-    color: #0d6ea1;
+    color: #0700d4;
     text-decoration: none;
     -webkit-transition: color 0.2s ease-in-out;
     -moz-transition: color 0.2s ease-in-out;
@@ -95,11 +92,11 @@ export const Content = styled.div`
     transition: color 0.2s ease-in-out;
   }
   a:hover {
-    color: #3593d9;
+    text-decoration: underline;
   }
 
   .footnote {
-    color: #0d6ea1;
+    color: #0700d4;
     font-size: 0.8em;
     vertical-align: super;
   }
@@ -271,7 +268,7 @@ export const Content = styled.div`
 
   p,
   h5 {
-    font-size: 1.1429em;
+    font-size: 1em;
     line-height: 1.3125em;
     margin: 1.3125em 0;
   }
