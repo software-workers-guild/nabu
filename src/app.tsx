@@ -5,7 +5,9 @@ import { IAppState } from "./types/IAppState";
 import { AppContainer } from "./components/AppContainer";
 import { read } from "node-readability";
 
+
 export class App extends React.Component<{}, IAppState> {
+
   state = {
     title: "",
     author: "",

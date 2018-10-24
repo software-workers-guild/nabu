@@ -17,6 +17,7 @@ class PageContent extends React.Component<IPageContentProps, {}> {
       wordCount,
       content
     } = this.props;
+
     return (
       <Wrapper>
         <h1>{title}</h1>
