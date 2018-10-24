@@ -1,3 +1,4 @@
 declare module "node-readability";
 
-// probably should add types
+// TODO create types once
+// we figure out which library we want to use
