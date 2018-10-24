@@ -209,7 +209,6 @@ export const Content = styled.div`
   }
 
   figcaption {
-    // TODO: remove from dom
     display: none;
     /* font-style: italic;
     text-align: center;
