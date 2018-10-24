@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.div`
-`;
+export const Wrapper = styled.div``;
 
 // lazy
 export const Content = styled.div`
@@ -206,6 +205,8 @@ export const Content = styled.div`
   }
 
   figcaption {
+    /* TODO check whether we should manipulate dom
+    or just hide certain elements */
     display: none;
     /* font-style: italic;
     text-align: center;
