@@ -9,8 +9,8 @@ const UrlBarInput = ({
 }: IUrlBarInputProps) => (
   <Wrapper>
     <div>
-      <button>←</button>
-      <button>→</button>
+      <button id="back-button">←</button>
+      <button id="forward-button">→</button>
     </div>
     <Form onSubmit={e => onVisit(e)}>
       <Input
@@ -19,7 +19,7 @@ const UrlBarInput = ({
         value={inputValue}
       />
     </Form>
-    <button>Aa</button>
+    <button id="settings-button">Aa</button>
   </Wrapper>
 );
 
