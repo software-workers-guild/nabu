@@ -4,12 +4,12 @@
 
 1. Clone the repo
 
-   `$ git clone git@github.com:software-workers-guild/nabu.git`
+   `git clone git@github.com:software-workers-guild/nabu.git`
 
 2. Install dependencies
 
-   `$ yarn install`
+   `yarn install`
 
 3. Start the app
 
-   `$ yarn start`
+   `yarn start`
