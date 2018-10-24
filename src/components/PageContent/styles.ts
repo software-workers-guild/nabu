@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.div`
-`;
+export const Wrapper = styled.div``;
 
 // lazy
 export const Content = styled.div`
@@ -206,7 +205,10 @@ export const Content = styled.div`
   }
 
   figcaption {
-    font-style: italic;
+    /* TODO check whether we should manipulate dom
+    or just hide certain elements */
+    display: none;
+    /* font-style: italic;
     text-align: center;
     background: white;
     color: #666666;
@@ -219,7 +221,7 @@ export const Content = styled.div`
     -moz-transition: all 0.2s ease-in-out;
     -o-transition: all 0.2s ease-in-out;
     -ms-transition: all 0.2s ease-in-out;
-    transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out; */
   }
 
   figure:hover > figcaption {

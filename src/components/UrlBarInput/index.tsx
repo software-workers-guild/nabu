@@ -1,36 +1,17 @@
 import * as React from "react";
-import styled from "styled-components";
+import { Wrapper, Form, Input } from "./styles";
+import { IUrlBarInputProps } from "./types";
 
-const Input = styled.input`
-  width: 100%;
-  padding: 6px 10px;
-  margin: 0;
-  display: block;
-  border: 1px solid #000;
-`;
-
-const Wrapper = styled.div`
-  position: fixed;
-  padding: 15px 10px;
-  border-bottom: 1px solid #000;
-  background-color: #fff;
-  top: 0;
-  left: 0;
-  right: 0;
-`;
-
-const Form = styled.form`
-  display: flex;
-`;
-
-interface IUrlBarInput {
-  onVisit: any;
-  onInputChange: any;
-  inputValue: string;
-}
-
-const UrlBarInput = ({ onVisit, inputValue, onInputChange }: IUrlBarInput) => (
+const UrlBarInput = ({
+  onVisit,
+  inputValue,
+  onInputChange
+}: IUrlBarInputProps) => (
   <Wrapper>
+    <div>
+      <button>←</button>
+      <button>→</button>
+    </div>
     <Form onSubmit={e => onVisit(e)}>
       <Input
         onChange={e => onInputChange(e)}
@@ -38,6 +19,7 @@ const UrlBarInput = ({ onVisit, inputValue, onInputChange }: IUrlBarInput) => (
         value={inputValue}
       />
     </Form>
+    <button>Aa</button>
   </Wrapper>
 );
 

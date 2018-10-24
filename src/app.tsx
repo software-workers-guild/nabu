@@ -1,96 +1,51 @@
 import * as React from "react";
 import UrlBarInput from "./components/UrlBarInput";
 import PageContent from "./components/PageContent";
-import styled from "styled-components";
-// its okay
-// we are going to swap this
-// for node-readability,
-// just chill
-const mercury = require("mercury-parser")(
-  "PB12LDArVRzLeMogouAolKnimhRDgQcCG1kHCPUy"
-);
+import { IAppState } from "./types/IAppState";
+import { AppContainer } from "./components/AppContainer";
+import { read } from "node-readability";
 
-const Container = styled.div`
-  padding: 98px 40px 0;
-`;
-
-interface IMercuryResponse {
-  title: string;
-  author: string;
-  date_published: string;
-  dek: string;
-  lead_image_url: string;
-  content: string;
-  next_page_url: string;
-  url: string;
-  domain: string;
-  excerpt: string;
-  word_count: number | null | undefined;
-  direction: string;
-  total_pages: number;
-  rendered_pages: number;
-}
-
-interface AppState {
-  title?: string;
-  author?: string;
-  content?: string;
-  datePublished?: string;
-  url?: string;
-  wordCount?: number | null | undefined;
-  inputValue?: string;
-}
-
-export class App extends React.Component<{}, AppState> {
+export class App extends React.Component<{}, IAppState> {
   state = {
     title: "",
     author: "",
     content: "",
     datePublished: "",
-    url: "",
     wordCount: null,
     inputValue: ""
   };
-  private fetchUrl = (e: any) => {
+  private fetchUrl = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("fetching url");
 
-    mercury
-      .parse(this.state.inputValue)
-      .then((response: IMercuryResponse) => {
-        console.log(response);
-        this.setState({
-          title: response.title,
-          url: response.url,
-          author: response.author,
-          content: response.content,
-          datePublished: response.date_published,
-          wordCount: response.word_count
-        });
-      })
-      .catch((err: any) => {
-        console.log("Error", err);
+    read(this.state.inputValue, (err: any, article: any, meta: any) => {
+      console.log(article.content);
+      console.log(article.title);
+      console.log(article.html);
+      console.log(article.document);
+      console.log(meta);
+      console.log(err);
+
+      this.setState({
+        title: article.title,
+        content: article.content
       });
+
+      // Close article to clean up jsdom and prevent leaks
+      article.close();
+    });
   };
 
-  private onInputChange = (e: any) => {
+  private onInputChange = (e: React.FormEvent<HTMLInputElement>): void => {
     this.setState({
-      inputValue: e.target.value
+      inputValue: e.currentTarget.value
     });
   };
 
   render() {
-    const {
-      title,
-      author,
-      content,
-      datePublished,
-      url,
-      wordCount
-    } = this.state;
+    const { title, author, content, datePublished, wordCount } = this.state;
 
     return (
-      <Container>
+      <AppContainer>
         <UrlBarInput
           onInputChange={this.onInputChange}
           onVisit={this.fetchUrl}
@@ -101,10 +56,9 @@ export class App extends React.Component<{}, AppState> {
           author={author}
           content={content}
           datePublished={datePublished}
-          url={url}
           wordCount={wordCount}
         />
-      </Container>
+      </AppContainer>
     );
   }
 }

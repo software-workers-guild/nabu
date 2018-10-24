@@ -1,32 +1,27 @@
 import * as React from "react";
 import { Content, Wrapper } from "./styles";
+import { IPageContentProps } from "./types";
 
-interface IPageContent {
-  title: string;
-  author: string;
-  content?: string;
-  datePublished: string;
-  url: string;
-  wordCount?: number | null | undefined;
-}
-
-class PageContent extends React.Component<IPageContent, {}> {
+/**
+ * keeping as a class because
+ * might need to do some manipulation
+ * when rendering
+ */
+class PageContent extends React.Component<IPageContentProps, {}> {
   render() {
-    const {
-      title,
-      author,
-      datePublished,
-      url,
-      wordCount,
-      content
-    } = this.props;
+    const { title, author, datePublished, wordCount, content } = this.props;
 
     return (
       <Wrapper>
         <h1>{title}</h1>
         <h2>{author}</h2>
         <h3>{datePublished}</h3>
-        <h3>{wordCount} {wordCount > 1 ? "words" : wordCount == 1 ? "word" : null}</h3>
+
+        {wordCount && (
+          <h3>
+            {wordCount} {wordCount > 1 ? "words" : "word"}
+          </h3>
+        )}
         {content && <Content dangerouslySetInnerHTML={{ __html: content }} />}
       </Wrapper>
     );
