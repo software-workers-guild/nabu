@@ -40,5 +40,6 @@ export const Wrapper = styled.div`
 
 export const Form = styled.form`
   display: flex;
-  flex-grow: 2;order: none;
+  flex-grow: 2;
+  order: none;
 `;
