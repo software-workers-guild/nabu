@@ -18,22 +18,34 @@ export class App extends React.Component<{}, IAppState> {
   private fetchUrl = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    read(this.state.inputValue, (err: any, article: any, meta: any) => {
-      console.log(article.content);
-      console.log(article.title);
-      console.log(article.html);
-      console.log(article.document);
-      console.log(meta);
-      console.log(err);
+    read(
+      this.state.inputValue,
+      {
+        cleanRulers: [
+          (obj: any, tag: any) => {
+            if (tag === "a") {
+              console.log("links", obj);
+            }
+          }
+        ]
+      },
+      (err: any, article: any, meta: any) => {
+        console.log(article.content);
+        console.log(article.title);
+        console.log(article.html);
+        console.log(article.document);
+        console.log(meta);
+        console.log(err);
 
-      this.setState({
-        title: article.title,
-        content: article.content
-      });
+        this.setState({
+          title: article.title,
+          content: article.content
+        });
 
-      // Close article to clean up jsdom and prevent leaks
-      article.close();
-    });
+        // Close article to clean up jsdom and prevent leaks
+        article.close();
+      }
+    );
   };
 
   private onInputChange = (e: React.FormEvent<HTMLInputElement>): void => {

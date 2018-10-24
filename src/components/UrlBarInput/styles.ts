@@ -16,9 +16,10 @@ export const Wrapper = styled.div`
   top: 0;
   left: 0;
   right: 0;
-  box-shadow: 0px 0px 10px #000;
+  display: flex;
 `;
 
 export const Form = styled.form`
   display: flex;
+  flex-grow: 2;
 `;

@@ -8,6 +8,10 @@ const UrlBarInput = ({
   onInputChange
 }: IUrlBarInputProps) => (
   <Wrapper>
+    <div>
+      <button>←</button>
+      <button>→</button>
+    </div>
     <Form onSubmit={e => onVisit(e)}>
       <Input
         onChange={e => onInputChange(e)}
@@ -15,6 +19,7 @@ const UrlBarInput = ({
         value={inputValue}
       />
     </Form>
+    <button>Aa</button>
   </Wrapper>
 );
 
