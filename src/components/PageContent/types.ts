@@ -3,6 +3,5 @@ export interface IPageContentProps {
   author: string;
   content?: string;
   datePublished: string;
-  url: string;
   wordCount?: number | null | undefined;
 }

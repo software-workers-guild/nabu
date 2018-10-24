@@ -3,7 +3,6 @@ export interface IAppState {
   author?: string;
   content?: string;
   datePublished?: string;
-  url?: string;
   wordCount?: number | null | undefined;
   inputValue?: string;
 }

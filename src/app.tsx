@@ -5,15 +5,12 @@ import { IAppState } from "./types/IAppState";
 import { AppContainer } from "./components/AppContainer";
 import { read } from "node-readability";
 
-
 export class App extends React.Component<{}, IAppState> {
-
   state = {
     title: "",
     author: "",
     content: "",
     datePublished: "",
-    url: "",
     wordCount: null,
     inputValue: ""
   };
@@ -45,14 +42,7 @@ export class App extends React.Component<{}, IAppState> {
   };
 
   render() {
-    const {
-      title,
-      author,
-      content,
-      datePublished,
-      url,
-      wordCount
-    } = this.state;
+    const { title, author, content, datePublished, wordCount } = this.state;
 
     return (
       <AppContainer>
@@ -66,7 +56,6 @@ export class App extends React.Component<{}, IAppState> {
           author={author}
           content={content}
           datePublished={datePublished}
-          url={url}
           wordCount={wordCount}
         />
       </AppContainer>
