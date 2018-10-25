@@ -25,6 +25,12 @@ export class App extends React.Component<{}, IAppState> {
 
       article.close();
     });
+
+    this.scrollToTop();
+  };
+
+  private scrollToTop = () => {
+    window.scrollTo(0, 0);
   };
 
   private fetchUrl = (e: React.FormEvent<HTMLFormElement>) => {
@@ -38,6 +44,8 @@ export class App extends React.Component<{}, IAppState> {
 
       article.close();
     });
+
+    this.scrollToTop();
   };
 
   private onInputChange = (e: React.FormEvent<HTMLInputElement>): void => {
