@@ -4,4 +4,5 @@ export interface IPageContentProps {
   content?: string;
   datePublished: string;
   wordCount?: number | null | undefined;
+  fetchLink: (url: string) => void;
 }

@@ -81,7 +81,8 @@ export const Content = styled.div`
     word-wrap: break-word;
   }
 
-  a {
+  a,
+  .nabu-link {
     color: #0700d4;
     text-decoration: none;
     -webkit-transition: color 0.2s ease-in-out;
@@ -89,8 +90,10 @@ export const Content = styled.div`
     -o-transition: color 0.2s ease-in-out;
     -ms-transition: color 0.2s ease-in-out;
     transition: color 0.2s ease-in-out;
+    cursor: pointer;
   }
-  a:hover {
+  a:hover,
+  .nabu-link:hover {
     text-decoration: underline;
   }
 
