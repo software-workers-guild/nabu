@@ -14,23 +14,28 @@ export class App extends React.Component<{}, IAppState> {
     wordCount: null,
     inputValue: ""
   };
+
+  private fetchLink = (url: string) => {
+    read(url, (err: any, article: any, meta: any) => {
+      this.setState({
+        title: article.title,
+        content: article.content,
+        inputValue: url
+      });
+
+      article.close();
+    });
+  };
+
   private fetchUrl = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     read(this.state.inputValue, (err: any, article: any, meta: any) => {
-      console.log(article.content);
-      console.log(article.title);
-      console.log(article.html);
-      console.log(article.document);
-      console.log(meta);
-      console.log(err);
-
       this.setState({
         title: article.title,
         content: article.content
       });
 
-      // Close article to clean up jsdom and prevent leaks
       article.close();
     });
   };
@@ -57,6 +62,7 @@ export class App extends React.Component<{}, IAppState> {
           content={content}
           datePublished={datePublished}
           wordCount={wordCount}
+          fetchLink={this.fetchLink}
         />
       </AppContainer>
     );
