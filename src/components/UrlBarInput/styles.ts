@@ -17,25 +17,25 @@ export const Wrapper = styled.div`
   left: 0;
   right: 0;
   display: flex;
+`;
 
-  button {
-    background-color: #fff;
-    border: none;
-    cursor: pointer;
-    font-size: 20px;
-  }
+export const NavButton = styled.button`
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+`;
 
-  #back-button {
-    padding: 0px 10px 0px 20px;
-  }
+export const BackButton = styled(NavButton)`
+  padding: 0px 10px 0px 20px;
+`;
 
-  #forward-button {
-    padding: 0px 20px 0px 10px;
-  }
+export const ForwardButton = styled(NavButton)`
+  padding: 0px 20px 0px 10px;
+`;
 
-  #settings-button {
-    padding: 0px 20px;
-  }
+export const SettingsButton = styled(NavButton)`
+  padding: 0px 20px;
 `;
 
 export const Form = styled.form`

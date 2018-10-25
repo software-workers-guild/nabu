@@ -1,5 +1,12 @@
 import * as React from "react";
-import { Wrapper, Form, Input } from "./styles";
+import {
+  Wrapper,
+  Form,
+  Input,
+  BackButton,
+  ForwardButton,
+  SettingsButton
+} from "./styles";
 import { IUrlBarInputProps } from "./types";
 
 const UrlBarInput = ({
@@ -9,8 +16,8 @@ const UrlBarInput = ({
 }: IUrlBarInputProps) => (
   <Wrapper>
     <div>
-      <button id="back-button">←</button>
-      <button id="forward-button">→</button>
+      <BackButton>←</BackButton>
+      <ForwardButton>→</ForwardButton>
     </div>
     <Form onSubmit={e => onVisit(e)}>
       <Input
@@ -19,7 +26,7 @@ const UrlBarInput = ({
         value={inputValue}
       />
     </Form>
-    <button id="settings-button">Aa</button>
+    <SettingsButton>Aa</SettingsButton>
   </Wrapper>
 );
 
